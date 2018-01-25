@@ -26,4 +26,12 @@
 (add-hook 'c-mode-hook 'sanityinc/no-trailing-whitespace)
 (add-hook 'c++-mode-hook 'sanityinc/no-trailing-whitespace)
 
+;; (use-package tabbar-group)
+
+(use-package tabbar
+  :ensure t
+  :pin melpa
+  :config
+  (tabbar-mode))
+
 (provide 'init-local)
