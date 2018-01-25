@@ -22,4 +22,8 @@
 ;;(setq path-to-ctags "c:/Users/SESA452110/MyPrograms/bin/ctags.exe")
 (load "indexers")
 
+;; Stop trailing whitespaces in C
+(add-hook 'c-mode-hook 'sanityinc/no-trailing-whitespace)
+(add-hook 'c++-mode-hook 'sanityinc/no-trailing-whitespace)
+
 (provide 'init-local)
