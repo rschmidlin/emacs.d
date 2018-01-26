@@ -132,7 +132,7 @@
 
   ;; Define special modes where boon should be used instead
   (defvar boon-non-special-list
-    '(bookmark-bmenu-mode))
+    '())
   (defvar boon-new-special-list
     '())
 
