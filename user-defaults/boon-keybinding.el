@@ -75,7 +75,7 @@
   (interactive)
   (load-file (buffer-file-name)))
 
-(define-key boon-keybinding-minor-mode-map (kbd "C-c C-c") 'load-current-file)
+(define-key emacs-lisp-mode-map (kbd "C-c C-c") 'load-current-file)
 
 
 (define-minor-mode boon-keybinding-minor-mode
