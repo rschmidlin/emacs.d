@@ -13,3 +13,4 @@
   :init
   (require 'cygwin-mount))
 
+(setq path-to-ctags "c:/Users/SESA452110/MyPrograms/bin/ctags.exe")
