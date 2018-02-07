@@ -76,9 +76,8 @@
   (load-file (buffer-file-name)))
 
 (define-key emacs-lisp-mode-map (kbd "C-c C-c") 'load-current-file)
-(define-key c-mode-map (kbd "C-c C-c") 'compile)
-(define-key c++-mode-map (kbd "C-c C-c") 'compile)
-
+(add-hook 'c-mode-hook (lambda () (define-key c-mode-map (kbd "C-c C-c") 'compile)))
+(add-hook 'c++-mode-hook (lambda () (define-key c++-mode-map (kbd "C-c C-c") 'compile)))
 
 (define-minor-mode boon-keybinding-minor-mode
   "A minor mode so that my key settings override annoying major modes."
