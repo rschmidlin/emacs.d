@@ -42,4 +42,6 @@
   :config
   (tabbar-mode))
 
+(server-start)
+
 (provide 'init-local)
