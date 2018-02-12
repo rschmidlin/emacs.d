@@ -66,6 +66,22 @@
 (define-key boon-keybinding-minor-mode-map (kbd "C-c C-o") 'cscope-find-called-functions)
 (define-key boon-keybinding-minor-mode-map (kbd "C-c C-p") 'cscope-find-this-symbol)
 
+;; Python indexing
+(defun raul-find-definitions ()
+  (interactive)
+  (if (eq major-mode 'python-mode)
+      (anaconda-mode-find-definitions)
+    (xref-find-definitions (xref--read-identifier "Find definitions of: "))))
+
+(defun raul-find-references ()
+  (interactive)
+  (if (eq major-mode 'python-mode)
+      (anaconda-mode-find-references)
+    (xref-find-references (xref--read-identifier "Find references of: "))))
+
+(define-key boon-command-map (kbd "z") 'raul-find-definitions)
+(define-key boon-command-map (kbd "Z") 'raul-find-references)
+
 ;; Start org-mode
 (define-key boon-keybinding-minor-mode-map (kbd "C-c C-w") 'org-capture)
 
