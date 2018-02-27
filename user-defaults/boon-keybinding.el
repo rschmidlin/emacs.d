@@ -69,15 +69,19 @@
 ;; Python indexing
 (defun raul-find-definitions ()
   (interactive)
-  (if (eq major-mode 'python-mode)
-      (anaconda-mode-find-definitions)
-    (xref-find-definitions (xref--read-identifier "Find definitions of: "))))
+  (cond
+   ((eq major-mode 'python-mode) (anaconda-mode-find-definitions))
+   ((eq major-mode 'c++-mode) (ggtags-find-definition (ggtags-read-tag 'definition current-prefix-arg)))
+   ((eq major-mode 'c-mode) (ggtags-find-definition (ggtags-read-tag 'definition current-prefix-arg)))
+   (t (xref-find-definitions (xref--read-identifier "Find definitions of: ")))))
 
 (defun raul-find-references ()
   (interactive)
-  (if (eq major-mode 'python-mode)
-      (anaconda-mode-find-references)
-    (xref-find-references (xref--read-identifier "Find references of: "))))
+  (cond
+   ((eq major-mode 'python-mode) (anaconda-mode-find-references))
+   ((eq major-mode 'c++-mode) (ggtags-find-reference (ggtags-read-tag 'reference current-prefix-arg)))
+   ((eq major-mode 'c-mode) (ggtags-find-reference (ggtags-read-tag 'reference current-prefix-arg)))
+   (t (xref-find-references (xref--read-identifier "Find references of: ")))))
 
 (define-key boon-command-map (kbd "z") 'raul-find-definitions)
 (define-key boon-command-map (kbd "Z") 'raul-find-references)

@@ -85,6 +85,7 @@
 	  (dolist (dir directories)
 		(setq command (concat command "find " dir " -name *.cpp >> " file " && "))
 		(setq command (concat command "find " dir " -name *.hpp >> " file " && "))
+		(setq command (concat command "find " dir " -name *.tpp >> " file " && "))
 		(setq command (concat command "find " dir " -name *.c >> " file " && "))
 		(setq command (concat command "find " dir " -name *.h >> " file " && ")))
 	  (setq command (substring command 0 -4))
