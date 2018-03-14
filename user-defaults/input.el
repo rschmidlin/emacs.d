@@ -134,7 +134,7 @@
   (defvar boon-non-special-list
     '())
   (defvar boon-new-special-list
-    '())
+    '(fundamental-mode))
 
   (defun use-special-mode-p (old-function &rest arguments)
     "Function to substitute boon-special-mode-p and disallow use of special mode for some major-modes"
