@@ -42,6 +42,10 @@
   :config
   (tabbar-mode))
 
+(projectile-mode -1)
+
 (server-start)
+
+(set-face-attribute 'default nil :height 120)
 
 (provide 'init-local)

@@ -73,8 +73,8 @@
   (interactive)
   (cond
    ((eq major-mode 'python-mode) (anaconda-mode-find-definitions))
-   ((eq major-mode 'c++-mode) (ggtags-find-definition (ggtags-read-tag 'definition current-prefix-arg)))
-   ((eq major-mode 'c-mode) (ggtags-find-definition (ggtags-read-tag 'definition current-prefix-arg)))
+   ((eq major-mode 'c++-mode) (ggtags-find-tag-dwim (ggtags-read-tag 'definition current-prefix-arg)))
+   ((eq major-mode 'c-mode) (ggtags-find-tag-dwim (ggtags-read-tag 'definition current-prefix-arg)))
    (t (xref-find-definitions (xref--read-identifier "Find definitions of: ")))))
 
 (defun raul-find-references ()
