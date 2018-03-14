@@ -22,6 +22,8 @@
 (define-key boon-command-map (kbd ":") 'delete-window)
 (define-key boon-command-map (kbd "T") 'query-replace)
 (define-key boon-command-map (kbd "_") 'undo-tree-redo)
+(define-key boon-command-map (kbd "M-_") 'undo-tree-visualize)
+(define-key boon-command-map (kbd "M-f") 'browse-kill-ring)
 (define-key boon-goto-map (kbd "i") 'counsel-imenu)
 
 ;; New keys on C-x or C-c groups avoiding necessity of pressing control

@@ -128,7 +128,13 @@
     :config
     (boon-powerline-theme) ;; if you want use powerline with Boon
     (boon-mode)
-    (boon-keybinding-minor-mode))
+    (boon-keybinding-minor-mode)
+    (global-set-key (kbd "M-i") 'previous-line)
+    (global-set-key (kbd "M-o") 'next-line)
+    (add-hook 'dired-mode-hook (lambda () (define-key dired-mode-map (kbd "M-i") 'dired-previous-line)))
+    (add-hook 'dired-mode-hook (lambda () (define-key dired-mode-map (kbd "M-o") 'dired-next-line)))
+    (add-hook 'ivy-mode-hook (lambda () (define-key ivy-minibuffer-map (kbd "M-i") 'ivy-previous-line)))
+    (add-hook 'ivy-mode-hook (lambda () (define-key ivy-minibuffer-map (kbd "M-o") 'ivy-next-line))))
 
   ;; Define special modes where boon should be used instead
   (defvar boon-non-special-list
