@@ -34,14 +34,45 @@
 (add-hook 'c-mode-hook 'sanityinc/no-trailing-whitespace)
 (add-hook 'c++-mode-hook 'sanityinc/no-trailing-whitespace)
 
-;; (use-package tabbar-group)
-
 (use-package tabbar
   :ensure t
   :pin melpa
   :config
   (tabbar-mode))
 
+;; Enable CMake major mode
+(use-package cmake-mode
+  :ensure t
+  :pin melpa)
+
+(use-package cmake-font-lock
+  :ensure t
+  :pin melpa
+  :init
+  (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
+
+;; Configure C-style
+;; (use-package rtags
+;;   :ensure t
+;;   :pin melpa
+;;   :init
+;;   (use-package ivy-rtags
+;; 	:ensure t
+;; 	:pin melpa)
+;;   (setq rtags-display-result-backend 'ivy))
+
+(use-package irony
+  :ensure t
+  :pin melpa)
+
+(use-package cmake-ide
+  :ensure t
+  :pin melpa
+  :config
+  (require 'rtags)
+  (cmake-ide-setup))
+
+(paredit-mode -1)
 (projectile-mode -1)
 
 (server-start)
