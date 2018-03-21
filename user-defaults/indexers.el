@@ -64,11 +64,11 @@
       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
       (make-frame-visible doc-frame))))
 
-(defun xref-peek-definitions (identifier)
+(defun xref-peek-definitions ()
   "Peek at definition using xref-find-definitions"
-  (interactive (list (xref--read-identifier "Find definitions of: ")))
+  (interactive)
   (let ((func (lambda ()
-				(xref--find-definitions identifier nil))))
+				(raul-find-definitions))))
 	(make-peek-frame func)))
 
 ; Generate cscope.files from a directory list
