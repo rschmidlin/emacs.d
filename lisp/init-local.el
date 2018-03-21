@@ -52,14 +52,15 @@
   (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
 
 ;; Configure C-style
-;; (use-package rtags
-;;   :ensure t
-;;   :pin melpa
-;;   :init
-;;   (use-package ivy-rtags
-;; 	:ensure t
-;; 	:pin melpa)
-;;   (setq rtags-display-result-backend 'ivy))
+(when (not (eq system-type 'windows-nt)
+           (use-package rtags
+             :ensure t
+             :pin melpa
+             :init
+             (use-package ivy-rtags
+               :ensure t
+               :pin melpa)
+             (setq rtags-display-result-backend 'ivy))))
 
 (use-package irony
   :ensure t
