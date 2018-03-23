@@ -40,10 +40,7 @@
   :config
   (tabbar-mode))
 
-<<<<<<< HEAD
-=======
 ;; Enable CMake major mode
->>>>>>> origin/raul
 (use-package cmake-mode
   :ensure t
   :pin melpa)
@@ -55,15 +52,16 @@
   (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
 
 ;; Configure C-style
-(when (not (eq system-type 'windows-nt)
-           (use-package rtags
-             :ensure t
-             :pin melpa
-             :init
-             (use-package ivy-rtags
-               :ensure t
-               :pin melpa)
-             (setq rtags-display-result-backend 'ivy))))
+(when (not (eq system-type 'windows-nt))
+  (use-package rtags
+    :ensure t
+    :pin melpa
+    :init
+    (use-package ivy-rtags
+      :ensure t
+      :pin melpa)
+    :config
+    (setq rtags-display-result-backend 'ivy)))
 
 (use-package irony
   :ensure t
@@ -91,7 +89,7 @@
   :ensure t
   :pin melpa
   :config
-  (require 'rtags)
+  (when (not (eq system-type 'windows-nt)) (require 'rtags))
   (cmake-ide-setup))
 
 (paredit-mode -1)
