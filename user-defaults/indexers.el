@@ -88,8 +88,8 @@
 		(setq command (concat command "find " dir " -name *.tpp >> " file " && "))
 		(setq command (concat command "find " dir " -name *.c >> " file " && "))
 		(setq command (concat command "find " dir " -name *.h >> " file " && ")))
-	  (setq command (substring command 0 -4))
-	  (shell-command command)))
+      (shell-command command)
+	  (setq command (substring command 0 -4))))
   (message "cscope file generated"))
 
  ; Functions to create Ctags and Cscope files

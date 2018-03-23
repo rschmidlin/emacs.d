@@ -42,6 +42,39 @@
   :config
   (tabbar-mode))
 
+(use-package cmake-mode
+  :ensure t
+  :pin melpa)
+
+(use-package cmake-font-lock
+  :ensure t
+  :pin melpa
+  :init
+  (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
+
+(use-package irony
+  :ensure t
+  :pin melpa
+  :config
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+  (add-hook 'objc-mode-hook 'irony-mode)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
+
+(use-package flycheck-irony
+  :ensure t
+  :pin melpa
+  :config
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
+
+(use-package flycheck-pos-tip
+  :ensure t
+  :pin melpa
+  :config
+  (flycheck-pos-tip-mode))
+
+(paredit-mode -1)
 (projectile-mode -1)
 
 (server-start)
