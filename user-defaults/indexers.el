@@ -83,13 +83,14 @@
 	(shell-command (concat "rm -rf " file))
 	(let ((command ""))
 	  (dolist (dir directories)
+        (setq command "")
 		(setq command (concat command "find " dir " -name *.cpp >> " file " && "))
 		(setq command (concat command "find " dir " -name *.hpp >> " file " && "))
 		(setq command (concat command "find " dir " -name *.tpp >> " file " && "))
 		(setq command (concat command "find " dir " -name *.c >> " file " && "))
-		(setq command (concat command "find " dir " -name *.h >> " file " && ")))
-      (shell-command command)
-	  (setq command (substring command 0 -4))))
+		(setq command (concat command "find " dir " -name *.h >> " file " && "))
+        (setq command (substring command 0 -4))
+        (shell-command command))))
   (message "cscope file generated"))
 
  ; Functions to create Ctags and Cscope files
@@ -113,5 +114,5 @@
 	  (let ((default-directory target-directory))
 		(call-process "gtags" nil (get-buffer-create "process-output") t "-f" filename))
 	(call-process "gtags" nil (get-buffer-create "process-output") t "-f" filename))
-	(message (concat "GNU Global tags built successfully for " filename)))
+  (message (concat "GNU Global tags built successfully for " filename)))
 
