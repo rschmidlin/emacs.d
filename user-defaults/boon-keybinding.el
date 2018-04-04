@@ -89,8 +89,19 @@
    ((eq major-mode 'c-mode) (ggtags-find-reference (ggtags-read-tag 'reference current-prefix-arg)))
    (t (xref-find-references (xref--read-identifier "Find references of: ")))))
 
+(defun raul-pop-marker ()
+  (interactive)
+  (cond
+   ((eq major-mode 'python-mode) (anaconda-mode-go-back))
+   ((eq major-mode 'c++-mode) (if (not (eq system-type 'windows-nt))
+                                  (rtags-location-stack-back)
+                                (ggtags-prev-mark)))
+   ((eq major-mode 'c-mode) (ggtags-prev-mark))
+   (t (xref-pop-marker-stack))))
+
 (define-key boon-command-map (kbd "z") 'raul-find-definitions)
 (define-key boon-command-map (kbd "Z") 'raul-find-references)
+(define-key boon-command-map (kbd "N") 'raul-pop-marker)
 
 ;; Start org-mode
 (define-key boon-keybinding-minor-mode-map (kbd "C-c C-w") 'org-capture)
