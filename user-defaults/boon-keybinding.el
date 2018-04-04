@@ -63,7 +63,7 @@
 
 ;; Include extended indexer navigation for Boon
 (define-key boon-keybinding-minor-mode-map (kbd "C-c C-z") 'xref-peek-definitions)
-(define-key boon-keybinding-minor-mode-map (kbd "C-c C-f") 'ggtags-find-file)
+(define-key boon-keybinding-minor-mode-map (kbd "C-c C-f") 'counsel-gtags-find-file)
 (define-key boon-keybinding-minor-mode-map (kbd "C-c C-i") 'cscope-find-functions-calling-this-function)
 (define-key boon-keybinding-minor-mode-map (kbd "C-c C-o") 'cscope-find-called-functions)
 (define-key boon-keybinding-minor-mode-map (kbd "C-c C-p") 'cscope-find-this-symbol)
@@ -75,8 +75,8 @@
    ((eq major-mode 'python-mode) (anaconda-mode-find-definitions))
    ((eq major-mode 'c++-mode) (if (not (eq system-type 'windows-nt))
                                   (rtags-find-symbol-at-point)
-                                (ggtags-find-tag-dwim (ggtags-read-tag 'definition current-prefix-arg))))
-   ((eq major-mode 'c-mode) (ggtags-find-tag-dwim (ggtags-read-tag 'definition current-prefix-arg)))
+                                (counsel-gtags-find-definition (counsel-gtags--read-tag 'definition))))
+   ((eq major-mode 'c-mode) (counsel-gtags-find-definition (counsel-gtags--read-tag 'definition)))
    (t (xref-find-definitions (xref--read-identifier "Find definitions of: ")))))
 
 (defun raul-find-references ()
@@ -85,8 +85,8 @@
    ((eq major-mode 'python-mode) (anaconda-mode-find-references))
    ((eq major-mode 'c++-mode) (if (not (eq system-type 'windows-nt))
                                   (rtags-find-references-at-point)
-                                (ggtags-find-reference (ggtags-read-tag 'reference current-prefix-arg))))
-   ((eq major-mode 'c-mode) (ggtags-find-reference (ggtags-read-tag 'reference current-prefix-arg)))
+                                (counsel-gtags-find-reference (counsel-gtags--read-tag 'reference))))
+   ((eq major-mode 'c-mode) (ggtags-find-reference (counsel-gtags--read-tag 'reference)))
    (t (xref-find-references (xref--read-identifier "Find references of: ")))))
 
 (define-key boon-command-map (kbd "z") 'raul-find-definitions)
