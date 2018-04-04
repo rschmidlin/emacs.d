@@ -56,8 +56,8 @@
       (with-selected-frame doc-frame
         (apply find-definition-function args)
         (read-only-mode)
-        (when (boundp 'semantic-stickyfunc-mode) (semantic-stickyfunc-mode -1))
-        (recenter-top-bottom 0))
+        (when (boundp 'semantic-stickyfunc-mode) (semantic-stickyfunc-mode -1)))
+      ;; (recenter-top-bottom 0))
 
       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
       ;; 5. Make frame visible again ;;
