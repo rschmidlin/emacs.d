@@ -101,6 +101,7 @@
 ;;   (cmake-ide-setup))
 
 (delete 'enable-paredit-mode sanityinc/lispy-modes-hook)
+(desktop-save-mode-off)
 ;; (projectile-mode -1)
 
 (server-start)
