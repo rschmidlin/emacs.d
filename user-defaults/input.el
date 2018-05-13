@@ -2,7 +2,13 @@
 (defvar input-mode "boon")
 (defvar input-keyboard-layout "de")
 
-                                        ; Specializations for system-wide rebind of AltGr to Alt_L
+(use-package visual-regexp
+  :ensure t
+  :pin melpa
+  :config
+  (require 'visual-regexp))
+
+;; Specializations for system-wide rebind of AltGr to Alt_L
 (when (string= input-keyboard-layout "de")
   (defun insert-commercial-at()
     "Insert a commercial at before point."

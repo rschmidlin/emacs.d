@@ -40,6 +40,13 @@
   :config
   (tabbar-mode))
 
+(use-package golden-ratio
+  :ensure t
+  :pin melpa
+  :config
+  (require 'golden-ratio)
+  (golden-ratio-mode 1))
+
 ;; Enable CMake major mode
 (use-package cmake-mode
   :ensure t
@@ -63,42 +70,10 @@
     :config
     (setq rtags-display-result-backend 'ivy)))
 
-;; (use-package irony
-;;   :ensure t
-;;   :pin melpa
-;;   :config
-;;   (add-hook 'c++-mode-hook 'irony-mode)
-;;   (add-hook 'c-mode-hook 'irony-mode)
-;;   (add-hook 'objc-mode-hook 'irony-mode)
-;;   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
-
-;; (use-package company-irony
-;;   :ensure t
-;;   :pin melpa)
-
-;; (use-package flycheck-irony
-;;   :ensure t
-;;   :pin melpa
-;;   :config
-;;   (eval-after-load 'flycheck
-;;     '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
-
-;; (use-package flycheck-pos-tip
-;;   :ensure t
-;;   :pin melpa
-;;   :config
-;;   (flycheck-pos-tip-mode))
-
-;; (use-package irony-eldoc
-;;   :ensure t
-;;   :pin melpa)
-
-;; (use-package cmake-ide
-;;   :ensure t
-;;   :pin melpa
-;;   :config
-;;   (when (not (eq system-type 'windows-nt)) (require 'rtags))
-;;   (cmake-ide-setup))
+(add-to-list 'load-path "~/.emacs.d/cmake-ide")
+(require 'cmake-ide)
+(when (not (eq system-type 'windows-nt)) (require 'rtags))
+(cmake-ide-setup)
 
 (delete 'enable-paredit-mode sanityinc/lispy-modes-hook)
 (desktop-save-mode-off)
@@ -106,6 +81,6 @@
 
 (server-start)
 
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 140)
 
 (provide 'init-local)

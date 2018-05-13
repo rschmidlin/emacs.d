@@ -27,7 +27,7 @@
 (define-key boon-goto-map (kbd "i") 'counsel-imenu)
 
 ;; New keys on C-x or C-c groups avoiding necessity of pressing control
-(global-set-key (kbd "C-x t") 'query-replace-regexp)
+(global-set-key (kbd "C-x t") 'vr/query-replace)
 (global-set-key (kbd "C-x ö") 'save-buffer)
 (global-set-key (kbd "C-x j") 'find-file)
 (global-set-key (kbd "C-x p") 'recenter-top-bottom)

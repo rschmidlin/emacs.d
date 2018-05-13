@@ -1,0 +1,3 @@
+[submodule "cmake-ide"]
+	path = cmake-ide
+	url = https://github.com/rschmidlin/cmake-ide.git
