@@ -1,6 +1,7 @@
 ;; Install use-package for managing packages
 (add-to-list 'load-path "~/.emacs.d/use-package")
 (require 'use-package)
+(setq use-package-always-ensure t)
 
 ;; Configure proxy servers to be used
 (load-file "~/.emacs.d/proxy_conf.el")
@@ -35,33 +36,27 @@
 (add-hook 'c++-mode-hook 'sanityinc/no-trailing-whitespace)
 
 (use-package tabbar
-  :pin melpa
   :config
   (tabbar-mode))
 
 (use-package golden-ratio
-  :pin melpa
   :config
   (require 'golden-ratio)
   (golden-ratio-mode 1)
   (advice-add #'ace-window :after #'golden-ratio))
 
 ;; Enable CMake major mode
-(use-package cmake-mode
-  :pin melpa)
+(use-package cmake-mode)
 
 (use-package cmake-font-lock
-  :pin melpa
   :init
   (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
 
 ;; Configure C-style
 (when (not (eq system-type 'windows-nt))
   (use-package rtags
-    :pin melpa
     :init
-    (use-package ivy-rtags
-      :pin melpa)
+    (use-package ivy-rtags)
     :config
     (setq rtags-display-result-backend 'ivy)))
 
@@ -70,8 +65,7 @@
 (when (not (eq system-type 'windows-nt)) (require 'rtags))
 (cmake-ide-setup)
 
-(use-package realgud
-  :pin melpa)
+(use-package realgud)
 
 (delete 'enable-paredit-mode sanityinc/lispy-modes-hook)
 (desktop-save-mode-off)

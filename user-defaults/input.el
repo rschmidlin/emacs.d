@@ -3,8 +3,6 @@
 (defvar input-keyboard-layout "de")
 
 (use-package visual-regexp
-  :ensure t
-  :pin melpa
   :config
   (require 'visual-regexp))
 
@@ -60,23 +58,17 @@
   (global-set-key (kbd "C-M-<") 'insert-pipe))
 
                                         ; Help switching windows
-(use-package ace-window
-  :ensure t
-  :pin melpa)
+(use-package ace-window)
 
 ; Initialize ErgoEmacs, requires persistent-soft and undo-tree (at directory .emacs.d)
 (when (string= input-mode "ergoemacs")
   (use-package ergoemacs-mode
-	:ensure t
-	:pin melpa
 	:init
 	(setq ergoemacs-theme nil)
 	:config
 	(ergoemacs-mode 1))
 
   (use-package god-mode
-	:ensure t
-	:pin melpa
 	:bind ("<escape>" . god-local-mode)
 	:init
 	(setq god-exempt-major-modes nil)
@@ -112,21 +104,10 @@
   (xah-fly-keys 1))
 
 (when (string= input-mode "boon")
-  (use-package multiple-cursors
-    :ensure t
-    :pin melpa)
-  
-  (use-package expand-region
-    :ensure t
-    :pin melpa)
-  
-  (use-package powerline
-    :ensure t
-    :pin melpa)
-
+  (use-package multiple-cursors)
+  (use-package expand-region)
+  (use-package powerline)
   (use-package boon
-    :ensure t
-    :pin melpa
     :init 
     (require 'boon-qwertz) ;; for qwerty port
     (require 'boon-powerline)

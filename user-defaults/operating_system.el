@@ -8,7 +8,6 @@
 
 ;; Install cygwin-mount to work with Cygwin paths
 ;; (use-package cygwin-mount
-;;   :pin melpa
 ;;   :init
 ;;   (require 'cygwin-mount))
 
