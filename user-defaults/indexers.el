@@ -1,23 +1,19 @@
 ; Use cscope
 (use-package xcscope
-	     :ensure t
-	     :pin melpa
-	     :init
-	     ; Configure Emacs to accept Cygwin executables
-	     (setq cscope-do-not-update-database t)
-	     ;(setq exec-path (cons "C:/cygwin/bin" exec-path))
-	     :config
-	     (cscope-setup))
+  :pin melpa
+  :init ;; Configure Emacs to accept Cygwin executables
+  (setq cscope-do-not-update-database t) ;;(setq exec-path (cons "C:/cygwin/bin" exec-path))
+  :config
+  (cscope-setup))
 
 ; Install ggtags for GNU Global (ctags/cscope substitution)
 (use-package ggtags
-  :ensure t
   :pin melpa
   :init
   (add-hook 'c-mode-common-hook
-          (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-              (ggtags-mode 1)))))
+            (lambda ()
+              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+                (ggtags-mode 1)))))
 
 (defun make-peek-frame (find-definition-function &rest args)
   "Make a new frame for peeking definition"

@@ -35,13 +35,11 @@
 (add-hook 'c++-mode-hook 'sanityinc/no-trailing-whitespace)
 
 (use-package tabbar
-  :ensure t
   :pin melpa
   :config
   (tabbar-mode))
 
 (use-package golden-ratio
-  :ensure t
   :pin melpa
   :config
   (require 'golden-ratio)
@@ -50,11 +48,9 @@
 
 ;; Enable CMake major mode
 (use-package cmake-mode
-  :ensure t
   :pin melpa)
 
 (use-package cmake-font-lock
-  :ensure t
   :pin melpa
   :init
   (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
@@ -62,11 +58,9 @@
 ;; Configure C-style
 (when (not (eq system-type 'windows-nt))
   (use-package rtags
-    :ensure t
     :pin melpa
     :init
     (use-package ivy-rtags
-      :ensure t
       :pin melpa)
     :config
     (setq rtags-display-result-backend 'ivy)))
@@ -76,6 +70,9 @@
 (when (not (eq system-type 'windows-nt)) (require 'rtags))
 (cmake-ide-setup)
 
+(use-package realgud
+  :pin melpa)
+
 (delete 'enable-paredit-mode sanityinc/lispy-modes-hook)
 (desktop-save-mode-off)
 ;; (projectile-mode -1)
@@ -83,5 +80,7 @@
 (server-start)
 
 (set-face-attribute 'default nil :height 140)
+
+(global-linum-mode)
 
 (provide 'init-local)
