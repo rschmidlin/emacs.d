@@ -45,7 +45,8 @@
   :pin melpa
   :config
   (require 'golden-ratio)
-  (golden-ratio-mode 1))
+  (golden-ratio-mode 1)
+  (advice-add #'ace-window :after #'golden-ratio))
 
 ;; Enable CMake major mode
 (use-package cmake-mode
