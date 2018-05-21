@@ -6,75 +6,13 @@
 ;; Configure proxy servers to be used
 (load-file "~/.emacs.d/proxy_conf.el")
 
-;; MELPA to my package-archives
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-
-
 (add-to-list 'load-path "~/.emacs.d/user-defaults")
-
-;; Configure Emacs according to operating system
+(load "purcell-adaptation")
 (load "operating_system")
-
-;; Select input-interface system 
 (load "input")
-
-;; Configure indexers - ctags/cscope/ggtags
-;;(setq path-to-ctags "c:/Users/SESA452110/MyPrograms/bin/ctags.exe")
 (load "indexers")
-
-(setq c-default-style "k&r"
-      c-basic-offset 4
-      default-tab-width 4
-      ident-tabs-mode t)
-
-(add-hook 'c-mode-hook 'sanityinc/no-trailing-whitespace)
-(add-hook 'c++-mode-hook 'sanityinc/no-trailing-whitespace)
-
-;; Stop trailing whitespaces in C
-(add-hook 'c-mode-hook 'sanityinc/no-trailing-whitespace)
-(add-hook 'c++-mode-hook 'sanityinc/no-trailing-whitespace)
-
-(use-package tabbar
-  :config
-  (tabbar-mode))
-
-(use-package golden-ratio
-  :config
-  (require 'golden-ratio)
-  (golden-ratio-mode 1)
-  (advice-add #'ace-window :after #'golden-ratio))
-
-;; Enable CMake major mode
-(use-package cmake-mode)
-
-(use-package cmake-font-lock
-  :init
-  (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
-
-;; Configure C-style
-(when (not (eq system-type 'windows-nt))
-  (use-package rtags
-    :init
-    (use-package ivy-rtags)
-    :config
-    (setq rtags-display-result-backend 'ivy)))
-
-(add-to-list 'load-path "~/.emacs.d/cmake-ide")
-(require 'cmake-ide)
-(when (not (eq system-type 'windows-nt)) (require 'rtags))
-(cmake-ide-setup)
-
-(use-package realgud)
-
-(delete 'enable-paredit-mode sanityinc/lispy-modes-hook)
-(desktop-save-mode-off)
-;; (projectile-mode -1)
-
-(server-start)
-
-(set-face-attribute 'default nil :height 140)
-
-(global-linum-mode)
+(load "lang-c")
+(load "window-configuration")
+(load "debugger-configuration")
 
 (provide 'init-local)
