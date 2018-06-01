@@ -16,8 +16,7 @@
 ;; Define new commands for command mode
 (define-key boon-command-map (kbd ",") 'ace-window)
 (define-key boon-command-map (kbd "r") 'swiper)
-(define-key boon-command-map (kbd "m") 'split-window-below)
-(define-key boon-command-map (kbd "M") 'split-window-right)
+(define-key boon-command-map (kbd "m") 'golden-split-window)
 (define-key boon-command-map (kbd ".") 'delete-other-windows)
 (define-key boon-command-map (kbd ":") 'delete-window)
 (define-key boon-command-map (kbd "T") 'query-replace)
