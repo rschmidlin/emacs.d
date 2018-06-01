@@ -68,4 +68,6 @@
 (load "window-configuration")
 (load "debugger-configuration")
 
+(global-auto-revert-mode t)
+
 (provide 'init-local)
