@@ -21,7 +21,7 @@
   (let* ((nr-of-windows (count-windows))
          (target-window (golden-target-window nr-of-windows))
          (pivot-window (golden-pivot-window nr-of-windows target-window))
-         (new-nr-of-windows (+ nr-of-windows 1)))
+         (new-nr-of-windows (1+ nr-of-windows)))
     (other-window pivot-window)
     (if golden-vertical-orientation
         (split-window-right)
@@ -32,13 +32,13 @@
     (if (= new-nr-of-windows target-window)
         (setq golden-vertical-orientation (not golden-vertical-orientation)))))
 
-(defun golden-delete-window-after-advice (window-nr)
-  (let ((previous-nr-of-windows (+ (count-windows) 1))
+(defun golden-delete-window-after-advice (&optional window-nr)
+  (let ((previous-nr-of-windows (1+ (count-windows)))
         (target-window (golden-target-window (count-windows))))
     (if (= previous-nr-of-windows target-window)
         (setq golden-vertical-orientation (not golden-vertical-orientation)))))
 
-(defun golden-delete-other-windows-after-advice (window-nr)
+(defun golden-delete-other-windows-after-advice (&optional window-nr)
   (setq golden-vertical-orientation t))
 
 (defun golden-pivot-window (window-number target-window)
@@ -50,13 +50,12 @@
   (let ((range '(2 4 8 16 32 64))
         (n 0))
     (while (>= window-number (nth n range))
-      (setq n (+ n 1)))
+      (setq n (1+ n)))
     (nth n range)))
 
 (defun golden-navigate-to-buffer (number)
   "Rotates the buffer until we find the one in the list indexed by NUMBER"
-  (do ((buffer-to-switch 0 (+ buffer-to-switch 1)))
-      ((= buffer-to-switch number))
+  (dotimes (buffer-to-switch number nil)
     (next-buffer)))
 
 (advice-add #'delete-other-windows :after #'golden-delete-other-windows-after-advice)
