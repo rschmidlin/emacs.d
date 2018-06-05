@@ -32,7 +32,7 @@
     (if (= new-nr-of-windows target-window)
         (setq golden-vertical-orientation (not golden-vertical-orientation)))))
 
-(defun golden-delete-window-after-advice ()
+(defun golden-delete-window-after-advice (window-nr)
   (let ((previous-nr-of-windows (+ (count-windows) 1))
         (target-window (golden-target-window (count-windows))))
     (if (= previous-nr-of-windows target-window)
