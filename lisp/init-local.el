@@ -38,7 +38,7 @@
     (if (= previous-nr-of-windows target-window)
         (setq golden-vertical-orientation (not golden-vertical-orientation)))))
 
-(defun golden-delete-other-windows-after-advice ()
+(defun golden-delete-other-windows-after-advice (window-nr)
   (setq golden-vertical-orientation t))
 
 (defun golden-pivot-window (window-number target-window)
