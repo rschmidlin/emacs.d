@@ -5,13 +5,14 @@
   :config
   (cscope-setup))
 
-; Install ggtags for GNU Global (ctags/cscope substitution)
-(use-package ggtags
-  :init
-  (add-hook 'c-mode-common-hook
-            (lambda ()
-              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-                (ggtags-mode 1)))))
+                                        ; Install ggtags for GNU Global (ctags/cscope substitution)
+(when (eq system-type 'windows-nt)
+  (use-package ggtags
+    :init
+    (add-hook 'c-mode-common-hook
+              (lambda ()
+                (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+                  (ggtags-mode 1))))))
 
 (defun make-peek-frame (find-definition-function &rest args)
   "Make a new frame for peeking definition"
