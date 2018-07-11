@@ -22,7 +22,9 @@
     :config
     (setq rtags-display-result-backend 'ivy)))
 
-(add-to-list 'load-path "~/.emacs.d/cmake-ide")
-(require 'cmake-ide)
-(when (not (eq system-type 'windows-nt)) (require 'rtags))
-(cmake-ide-setup)
+(use-package cmake-ide
+  :init
+  (when (not (eq system-type 'windows-nt)) (require 'rtags))
+  :config
+  (require 'cmake-ide)
+  (cmake-ide-setup))
