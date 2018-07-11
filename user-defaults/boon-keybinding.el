@@ -62,7 +62,7 @@
 
 ;; Include extended indexer navigation for Boon
 (define-key boon-keybinding-minor-mode-map (kbd "C-c C-z") 'xref-peek-definitions)
-(define-key boon-keybinding-minor-mode-map (kbd "C-c C-f") 'ggtags-find-file)
+(define-key boon-keybinding-minor-mode-map (kbd "C-c C-f") 'projectile-find-file)
 (define-key boon-keybinding-minor-mode-map (kbd "C-c C-i") 'cscope-find-functions-calling-this-function)
 (define-key boon-keybinding-minor-mode-map (kbd "C-c C-o") 'cscope-find-called-functions)
 (define-key boon-keybinding-minor-mode-map (kbd "C-c C-p") 'cscope-find-this-symbol)
