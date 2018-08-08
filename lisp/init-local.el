@@ -68,5 +68,6 @@
 (load "debugger-configuration")
 
 (global-auto-revert-mode t)
+(global-disable-mouse-mode)
 
 (provide 'init-local)

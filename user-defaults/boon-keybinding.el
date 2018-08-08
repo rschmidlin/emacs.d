@@ -91,7 +91,7 @@
 (defun raul-pop-marker ()
   (interactive)
   (cond
-   ((eq major-mode 'python-mode) (anaconda-mode-go-back))
+   ((eq major-mode 'python-mode) (xref-pop-marker-stack))
    ((eq major-mode 'c++-mode) (if (not (eq system-type 'windows-nt))
                                   (rtags-location-stack-back)
                                 (ggtags-prev-mark)))
@@ -111,9 +111,15 @@
   (interactive)
   (load-file (buffer-file-name)))
 
+(defun raul-send-buffer-to-python ()
+  "Send complete buffer to Python"
+  (interactive)
+  (python-shell-send-buffer t))
+
 (define-key emacs-lisp-mode-map (kbd "C-c C-c") 'load-current-file)
 (add-hook 'c-mode-hook (lambda () (define-key c-mode-map (kbd "C-c C-c") 'compile)))
 (add-hook 'c++-mode-hook (lambda () (define-key c++-mode-map (kbd "C-c C-c") 'compile)))
+(add-hook 'python-mode-hook (lambda () (define-key python-mode-map (kbd "C-c C-c") 'raul-send-buffer-to-python)))
 
 (define-minor-mode boon-keybinding-minor-mode
   "A minor mode so that my key settings override annoying major modes."
