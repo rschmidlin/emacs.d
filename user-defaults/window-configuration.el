@@ -33,6 +33,6 @@
   (require 'e2wm)
   (global-set-key (kbd "M-+") 'e2wm:toggle))
 
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 130)
 
 (global-linum-mode)

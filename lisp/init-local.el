@@ -3,11 +3,6 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; Configure proxy servers to be used
-(load-file "~/.emacs.d/proxy_conf.el")
-;; (require 'package)
-;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-
 (add-to-list 'load-path "~/.emacs.d/user-defaults")
 (load "purcell-adaptation")
 (load "operating_system")
@@ -68,6 +63,7 @@
 (load "debugger-configuration")
 
 (global-auto-revert-mode t)
-(global-disable-mouse-mode)
+(toggle-debug-on-error)
+;; (global-disable-mouse-mode)
 
 (provide 'init-local)

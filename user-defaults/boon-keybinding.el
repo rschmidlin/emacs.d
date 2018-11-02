@@ -67,6 +67,8 @@
 (define-key boon-keybinding-minor-mode-map (kbd "C-c C-o") 'cscope-find-called-functions)
 (define-key boon-keybinding-minor-mode-map (kbd "C-c C-p") 'cscope-find-this-symbol)
 
+(define-key boon-keybinding-minor-mode-map (kbd "C-M-0") 'insert-right-curly-brace)
+
 ;; Python indexing
 (defun raul-find-definitions ()
   (interactive)
