@@ -22,9 +22,10 @@
     :config
     (setq rtags-display-result-backend 'ivy)))
 
-(use-package cmake-ide
-  :init
-  (when (not (eq system-type 'windows-nt)) (require 'rtags))
-  :config
-  (require 'cmake-ide)
-  (cmake-ide-setup))
+(when (not (eq system-type 'windows-nt))
+  (use-package cmake-ide
+    :init
+    (require 'rtags)
+    :config
+    (require 'cmake-ide)
+    (cmake-ide-setup)))
